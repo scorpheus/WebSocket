@@ -95,7 +95,7 @@ vector<string> WebSocket::explode(
 		end = theString.find( theDelimiter, start );
 
 		// If at end, use length=maxLength.  Else use length=end-start.
-		length = (end == string::npos) ? string::npos : end - start;
+		length = (end == string::npos) ? theString.size() : end - start;
 
 		if (theIncludeEmptyStrings
 			|| (   ( length > 0 ) /* At end, end == length == string::npos */
