@@ -17,8 +17,6 @@
 #include <vector> 
 #include <string> 
 
-using namespace std;
-
 enum WebSocketFrameType {
 	ERROR_FRAME=0xFF00,
 	INCOMPLETE_FRAME=0xFE00,
@@ -40,11 +38,11 @@ class WebSocket
 {
 	public:
 
-	string resource;
-	string host;
-	string origin;
-	string protocol;
-	string key;
+	std::string resource;
+	std::string host;
+	std::string origin;
+	std::string protocol;
+	std::string key;
 
 	WebSocket();
 
@@ -54,13 +52,13 @@ class WebSocket
 	 * @return [WS_INCOMPLETE_FRAME, WS_ERROR_FRAME, WS_OPENING_FRAME]
 	 */
 	WebSocketFrameType parseHandshake(unsigned char* input_frame, int input_len);
-	string answerHandshake();
+	std::string answerHandshake();
 
 	int makeFrame(WebSocketFrameType frame_type, unsigned char* msg, int msg_len, unsigned char* buffer, int buffer_len);
 	WebSocketFrameType getFrame(unsigned char* in_buffer, int in_length, unsigned char* out_buffer, int out_size, int* out_length);
 
-	string trim(string str);
-	vector<string> explode(string theString, string theDelimiter, bool theIncludeEmptyStrings = false );
+	std::string trim(std::string str);
+	std::vector<std::string> explode(std::string theString, std::string theDelimiter, bool theIncludeEmptyStrings = false );
 };
 
 #endif	/* WEBSOCKET_H */
